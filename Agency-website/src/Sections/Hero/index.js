@@ -191,7 +191,7 @@ const HeroSection = () => {
         <Lb id="leftBlock">
           <Topic>
             <Circle />
-            <span>We Build Blockchain</span>
+            <span>We Build Brands</span>
           </Topic>
           <Title>Transforming your digital presence</Title>
           <SubText>

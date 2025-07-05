@@ -118,16 +118,16 @@ const projects = [
     link: "https://spicy-huts.vercel.app/"
   },
   {
-    name: "Instagram-Clone",
-    text: "Instagram Clone is a full-stack social media web application inspired by Instagram. It allows users to sign up, upload and share photos, like and comment on posts, follow other users, and view a real-time feed. Designed with a modern UI, responsive layout, and smooth user experience, this project showcases key concepts like authentication, database management, REST APIs, and image handling — all packed into a real-world app structure..",
+    name: "InstaDM Automator",
+    text: "Craft Perfect Instagram DMs in Seconds Our Insta DM Generator helps you write engaging, personalized messages for your audience. Whether you're reaching out to new followers, potential clients, or promoting a product — generate high-converting DMs quickly and effortlessly.",
     image: "insta",
     link: "https://drive.google.com/file/d/1BUYKktNlYvQKToMo2vnaJKCEtz6ve7J0/view"
   },
   {
-    name: "Mobile App Design",
-    text: "Cross-platform mobile application with intuitive UI/UX design, push notifications, and offline functionality. Optimized for both iOS and Android platforms.",
+    name: "Business Website",
+    text: "Our agency specializes in crafting high-performance websites and digital solutions tailored to meet your business goals. From stunning designs to seamless user experiences, we turn your ideas into digital reality.",
     image: "Website Image-1",
-    link: "https://mobile-app-design.com"
+    link: "https://sypher-ten.vercel.app/"
   }
 ];
 

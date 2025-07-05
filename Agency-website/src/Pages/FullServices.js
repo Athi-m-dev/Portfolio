@@ -359,6 +359,11 @@ const FullServices = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
   const handleGetStartedClick = (packageType) => {
     // Navigate to home page and scroll to contact section with package type
     navigate(`/?package=${encodeURIComponent(packageType)}#contact`);
