@@ -54,12 +54,22 @@ const RightText = styled.div`
 const LeftText = styled.div`
   text-align: left;
 `;
+
+const Syphr = styled.span`
+  font-weight: bold;
+  font-size: 1.3em;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+`;
+
 const Footer = () => {
   return (
     <FOOTER>
       <LeftText>
-        © Built and Design by{" "}
-        <h1>sypher</h1>
+        © Built and Design by <Syphr>syphr</Syphr>
       </LeftText>
       <RightText>
         Reach out to us via 😉

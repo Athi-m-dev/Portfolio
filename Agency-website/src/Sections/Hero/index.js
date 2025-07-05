@@ -142,7 +142,7 @@ const Title = styled.h1`
 
 const SubText = styled.h5`
   font-size: calc(0.5rem + 0.5vw);
-  color: var(--nav2);
+  color: #fff;
 `;
 
 const CTA = styled.button`
@@ -191,7 +191,7 @@ const HeroSection = () => {
         <Lb id="leftBlock">
           <Topic>
             <Circle />
-            <span>We Build Web</span>
+            <span>We Build Blockchain</span>
           </Topic>
           <Title>Transforming your digital presence</Title>
           <SubText>
