@@ -235,7 +235,7 @@ const Header = () => {
     <Headers ref={ref}>
       <Logo>
         <img src={logo} alt="CodeBucks" />
-        <h3>Web</h3>
+        <h3>sypher</h3>
       </Logo>
       <Nav>
         <Link to="/">

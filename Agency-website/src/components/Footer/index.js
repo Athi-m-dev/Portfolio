@@ -59,10 +59,10 @@ const Footer = () => {
     <FOOTER>
       <LeftText>
         © Built and Design by{" "}
-        <h1>Web</h1>
+        <h1>sypher</h1>
       </LeftText>
       <RightText>
-        Reach out to me via 😉
+        Reach out to us via 😉
         <a href="https://www.instagram.com/theautoflow/?utm_source=qr&igsh=bmRnazV2NnF5YjYy#">
           <img src={Instagram} alt="Instagram" />
         </a>

@@ -118,16 +118,10 @@ const projects = [
     link: "https://spicy-huts.vercel.app/"
   },
   {
-    name: "Portfolio Website",
-    text: "Creative portfolio showcasing professional work with smooth animations, project galleries, and contact forms. Designed for creative professionals and freelancers.",
-    image: "avatar-3",
-    link: "https://portfolio-showcase.com"
-  },
-  {
-    name: "Business Dashboard",
-    text: "Comprehensive business analytics dashboard with real-time data visualization, reporting tools, and user management. Built for enterprise-level business intelligence.",
-    image: "avatar-4",
-    link: "https://business-dashboard-demo.com"
+    name: "Instagram-Clone",
+    text: "Instagram Clone is a full-stack social media web application inspired by Instagram. It allows users to sign up, upload and share photos, like and comment on posts, follow other users, and view a real-time feed. Designed with a modern UI, responsive layout, and smooth user experience, this project showcases key concepts like authentication, database management, REST APIs, and image handling — all packed into a real-world app structure..",
+    image: "insta",
+    link: "https://drive.google.com/file/d/1BUYKktNlYvQKToMo2vnaJKCEtz6ve7J0/view"
   },
   {
     name: "Mobile App Design",
