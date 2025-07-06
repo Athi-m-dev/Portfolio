@@ -109,7 +109,7 @@ const projects = [
     name: "State Guesser",
     text: "State Guesser is an interactive web game where users try to guess the correct Indian state (or U.S. state) based on hints, outlines, facts, or a blurred map image. It's a fun and educational way to test your geography knowledge, sharpen memory, and learn interesting trivia about different states. Perfect for students, quiz lovers, and anyone who enjoys a challenge!",
     image: "stateguesser",
-    link: "https://state-guesser.vercel.app/"
+    link: "https://game-rq20.onrender.com/"
   },
   {
     name: "Spicy Huts",
