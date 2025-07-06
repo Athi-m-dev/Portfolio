@@ -1,0 +1,33 @@
+/* Rintvera Font - Uncomment when font file is added */
+@font-face {
+  font-family: 'Rintvera';
+  src: url('./Rintvera.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rintvera';
+  src: url('./Rintvera.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback fonts - remove these when font file is added */
+/*
+@font-face {
+  font-family: 'Rintvera';
+  src: local('Arial');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rintvera';
+  src: local('Arial Bold');
+  font-weight: bold;
+  font-style: normal;
+}
+*/ 

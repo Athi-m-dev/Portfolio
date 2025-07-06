@@ -53,16 +53,40 @@ const RightText = styled.div`
 `;
 const LeftText = styled.div`
   text-align: left;
+  color:rgb(112, 112, 112);
 `;
 
 const Syphr = styled.span`
+  font-family: 'Rintvera', sans-serif;
+  padding : 4px;
   font-weight: bold;
   font-size: 1.3em;
-  background: linear-gradient(90deg, #ff00cc, #3333ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  color:rgb(0, 0, 0);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    transform: scale(1.05);
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff00cc, #3333ff);
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
 `;
 
 const Footer = () => {
@@ -73,11 +97,11 @@ const Footer = () => {
       </LeftText>
       <RightText>
         Reach out to us via 😉
-        <a href="https://www.instagram.com/theautoflow/?utm_source=qr&igsh=bmRnazV2NnF5YjYy#">
+        <a href="https://www.instagram.com/syphrweb/" target="_blank" rel="noopener noreferrer">
           <img src={Instagram} alt="Instagram" />
         </a>
         &nbsp;
-        <a href="https://github.com/anush006">
+        <a href="https://github.com/anush006" target="_blank" rel="noopener noreferrer">
           <img src={GitHub} alt="GitHub" />
         </a>
         &nbsp;

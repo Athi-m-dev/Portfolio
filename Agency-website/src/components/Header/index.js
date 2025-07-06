@@ -33,6 +33,56 @@ const Logo = styled.a`
   }
 `;
 
+const SyphrText = styled.h3`
+  font-family: 'Rintvera', sans-serif;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+    color: #ffffff;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    transition: width 0.3s ease;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::before {
+    width: 100%;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+`;
+
 const Nav = styled.nav`
   width: auto;
   max-width: 100%;
@@ -57,7 +107,7 @@ const Nav = styled.nav`
       background: transparent;
       transition: width 0.5s;
     }
-    &:not(:last-child):hover::after {
+    &:hover::after {
       width: 100%;
       background: var(--purple);
     }
@@ -234,8 +284,8 @@ const Header = () => {
   return (
     <Headers ref={ref}>
       <Logo>
-        <img src={logo} alt="CodeBucks" />
-        <h3>syphr</h3>
+        <img src={logo} alt="syphr" />
+        <SyphrText>syphr</SyphrText>
       </Logo>
       <Nav>
         <Link to="/">
@@ -251,7 +301,7 @@ const Header = () => {
           Contact Us
         </a>
         <a
-          href="https://www.instagram.com/theautoflow/?utm_source=qr&igsh=bmRnazV2NnF5YjYy#"
+          href="https://www.instagram.com/syphrweb/"
           target="_blank"
           rel="noopener noreferrer"
         >

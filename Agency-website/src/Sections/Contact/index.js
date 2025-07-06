@@ -73,12 +73,19 @@ const Form = styled.form`
     padding: 1rem calc(0.5rem + 1vw);
     margin-bottom: 1rem;
     background-color: var(--nav2);
-    border: none;
+    border: 2px solid transparent;
     border-radius: 4px;
     color: #eff7f8;
+    transition: all 0.3s ease;
+    
+    &.error {
+      border-color: #ff4444;
+      box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+    }
+    
     &:active,
     &:focus {
-      border: none;
+      border: 2px solid var(--purple);
       outline: none;
       background-color: var(--nav);
     }
@@ -94,12 +101,20 @@ const Form = styled.form`
     padding: 1rem calc(0.5rem + 1vw);
     margin-bottom: 1rem;
     background-color: var(--nav2);
-    border: none;
+    border: 2px solid transparent;
     border-radius: 4px;
     color: #eff7f8;
     margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    
+    &.error {
+      border-color: #ff4444;
+      box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+    }
+    
     &:focus,
     &:active {
+      border: 2px solid var(--purple);
       background-color: var(--nav);
     }
     &::placeholder {
@@ -151,14 +166,20 @@ const PackageSelect = styled.select`
   padding: 1rem calc(0.5rem + 1vw);
   margin-bottom: 1rem;
   background-color: var(--nav2);
-  border: none;
+  border: 2px solid transparent;
   border-radius: 4px;
   color: #eff7f8;
   width: 100%;
   cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &.error {
+    border-color: #ff4444;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.3);
+  }
   
   &:focus {
-    border: none;
+    border: 2px solid var(--purple);
     outline: none;
     background-color: var(--nav);
   }
@@ -168,9 +189,33 @@ const PackageSelect = styled.select`
     color: #eff7f8;
   }
 `;
+
+const ErrorMessage = styled.div`
+  color: #ff4444;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+
 const Contact = () => {
   const [selectedPackage, setSelectedPackage] = useState("");
   const [showPackageSelection, setShowPackageSelection] = useState(false);
+  const [showPackageWarning, setShowPackageWarning] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    package: ""
+  });
+  const [errors, setErrors] = useState({});
+  const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
     // Check if there's a package parameter in the URL
@@ -179,7 +224,9 @@ const Contact = () => {
     
     if (packageParam) {
       setSelectedPackage(packageParam);
+      setFormData(prev => ({ ...prev, package: packageParam }));
       setShowPackageSelection(true);
+      setShowPackageWarning(false); // Don't show warning if package is pre-selected
       
       // Ensure we're scrolled to the contact section
       const contactSection = document.getElementById('contact');
@@ -192,78 +239,166 @@ const Contact = () => {
     }
   }, []);
 
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+    
+    // Package validation - if no package is selected, show package selection
+    if (!formData.package) {
+      newErrors.package = "Please select an option";
+      // Automatically show package selection if it's not already shown
+      if (!showPackageSelection) {
+        setShowPackageSelection(true);
+        setShowPackageWarning(true); // Show warning when package selection appears
+      }
+    }
+    
+    setErrors(newErrors);
+    setShowErrors(true);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+    
+    // Keep dropdown visible for all selections, just remove warning
+    if (name === 'package' && value) {
+      // Don't hide the dropdown, just ensure it's visible
+      setShowPackageSelection(true);
+      // Remove the package warning message when any option is selected
+      setShowPackageWarning(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    if (validateForm()) {
+      // Form is valid, proceed with email
+      const subject = formData.package && formData.package !== "Just Contact Us" 
+        ? `Inquiry for ${formData.package} Package` 
+        : 'Contact Form Submission';
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\nPackage: ${formData.package || 'No specific package'}\nMessage: ${formData.message}`;
+      
+      // Open email with both email addresses
+      const mailtoLink = `mailto:anushoffcl@gmail.com,athithiyanm87@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoLink);
+    }
+  };
+
   return (
     <ContactSection id="contact">
       <Title>Get in touch</Title>
       {/* <Text>Lorem ipsum dolor sit amet, consectetur adipisicing.</Text> */}
       <Icons>
-        <a href="https://www.facebook.com/people/AutoFlow/61575137396110/?rdid=327TXWmmchUwFe9Q&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19J6fKXFt1%2F">
+        <a href="https://www.facebook.com/sypherweb" target="_blank" rel="noopener noreferrer">
           {" "}
           <img src={Facebook} alt="Facebook" />
         </a>
-        <a href="https://www.instagram.com/theautoflow/?utm_source=qr&igsh=bmRnazV2NnF5YjYy#">
+        <a href="https://www.instagram.com/syphrweb/" target="_blank" rel="noopener noreferrer">
           <img src={Instagram} alt="Instagram" />
         </a>
-        <a href="https://github.com/anush006">
+        <a href="https://github.com/anush006" target="_blank" rel="noopener noreferrer">
           <img src={GitHub} alt="GitHub" />
         </a>
       </Icons>
       
-      {showPackageSelection && (
+      {showPackageSelection && showPackageWarning && (
         <PackageMessage>
           Please select the package you're interested in.
         </PackageMessage>
       )}
       
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <input name="name" type="text" placeholder="your name" />
+          <input 
+            name="name" 
+            type="text" 
+            placeholder="your name" 
+            value={formData.name}
+            onChange={handleInputChange}
+            className={showErrors && errors.name ? 'error' : ''}
+          />
           <input
             name="email"
             type="email"
             placeholder="enter working email id"
+            value={formData.email}
+            onChange={handleInputChange}
+            className={showErrors && errors.email ? 'error' : ''}
           />
         </Row>
         
+        {showErrors && (errors.name || errors.email) && (
+          <ErrorMessage>
+            {errors.name && <div>{errors.name}</div>}
+            {errors.email && <div>{errors.email}</div>}
+          </ErrorMessage>
+        )}
+        
         {showPackageSelection && (
           <PackageSelect 
-            value={selectedPackage} 
-            onChange={(e) => setSelectedPackage(e.target.value)}
+            value={formData.package} 
+            onChange={handleInputChange}
             name="package"
+            className={showErrors && errors.package ? 'error' : ''}
           >
             <option value="">Select a package</option>
-            <option value="Starter">Starter</option>
-            <option value="Business">Business</option>
-            <option value="Enterprise">Enterprise</option>
+            <option value="Starter">Starter - $200</option>
+            <option value="Business">Business - $400</option>
+            <option value="Enterprise">Enterprise - $800</option>
             <option value="Advanced Custom">Advanced Custom</option>
+            <option value="Just Contact Us">Just Contact Us</option>
           </PackageSelect>
+        )}
+        
+        {showErrors && errors.package && (
+          <ErrorMessage>{errors.package}</ErrorMessage>
         )}
         
         <textarea
           name="message"
-          id=""
           cols="30"
           rows="2"
           placeholder="your message"
+          value={formData.message}
+          onChange={handleInputChange}
+          className={showErrors && errors.message ? 'error' : ''}
         ></textarea>
+        
+        {showErrors && errors.message && (
+          <ErrorMessage>{errors.message}</ErrorMessage>
+        )}
+        
         <div style={{ margin: "0 auto" }}>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              // Redirect to email with form data
-              const name = e.target.form?.name?.value || '';
-              const email = e.target.form?.email?.value || '';
-              const message = e.target.form?.message?.value || '';
-              const packageType = e.target.form?.package?.value || '';
-              
-              const subject = packageType ? `Inquiry for ${packageType} Package` : 'Contact Form Submission';
-              const body = `Name: ${name}\nEmail: ${email}\nPackage: ${packageType}\nMessage: ${message}`;
-              
-              // Open email with both email addresses
-              const mailtoLink = `mailto:anushoffcl@gmail.com,athithiyanm87@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-              window.open(mailtoLink);
-            }}
-          >
+          <button type="submit">
             Submit
           </button>
         </div>

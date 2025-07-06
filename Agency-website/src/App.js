@@ -3,6 +3,7 @@ import { GlobalStyle } from "./globalStyles";
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import FullServices from './Pages/FullServices';
+import './assets/fonts/fonts.css';
 
 const Home = lazy(() => import("./Pages/Home"));
 const Services = lazy(() => import("./Pages/Services"));

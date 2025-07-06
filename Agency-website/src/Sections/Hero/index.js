@@ -173,6 +173,16 @@ const CTA = styled.button`
 `;
 
 const HeroSection = () => {
+  const handleGetInTouch = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  };
+
   return (
     <HomeSection id="home">
       <Blobs>
@@ -197,7 +207,7 @@ const HeroSection = () => {
           <SubText>
             we help fast growing companies build award winning websites
           </SubText>
-          <CTA>
+          <CTA onClick={handleGetInTouch}>
             Get in touch &nbsp;
             <img src={arrow} alt="cta" width="100" height="100" />
           </CTA>
