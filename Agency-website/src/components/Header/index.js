@@ -284,7 +284,7 @@ const Header = () => {
   return (
     <Headers ref={ref}>
       <Logo>
-        <img src={logo} alt="syphr" />
+        {/* <img src={logo} alt="syphr" /> */}
         <SyphrText>syphr</SyphrText>
       </Logo>
       <Nav>
