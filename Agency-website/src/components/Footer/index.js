@@ -105,7 +105,7 @@ const Footer = () => {
           <img src={GitHub} alt="GitHub" />
         </a>
         &nbsp;
-        <a href="mailto:contact@syphr.site,athithiyanm87@gmail.com?subject=Email From Your Website">
+        <a href="mailto:contact@syphr.site,athithiyanm87@gmail.com?subject=Email From Your Website " target="_blank">
           <img src={Gmail} alt="Gmail" />
         </a>
       </RightText>
