@@ -93,7 +93,7 @@ const Footer = () => {
   return (
     <FOOTER>
       <LeftText>
-        © Built and Design by <Syphr>syphr</Syphr>
+        © Built and Design by <Syphr>SYPHR</Syphr>
       </LeftText>
       <RightText>
         Reach out to us via 😉
@@ -105,7 +105,7 @@ const Footer = () => {
           <img src={GitHub} alt="GitHub" />
         </a>
         &nbsp;
-        <a href="mailto:anushoffcl@gmail.com,athithiyanm87@gmail.com?subject=Email From Your Website">
+        <a href="mailto:contact@syphr.site,athithiyanm87@gmail.com?subject=Email From Your Website">
           <img src={Gmail} alt="Gmail" />
         </a>
       </RightText>

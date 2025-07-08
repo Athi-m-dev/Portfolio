@@ -308,7 +308,7 @@ const Contact = () => {
       const body = `Name: ${formData.name}\nEmail: ${formData.email}\nPackage: ${formData.package || 'No specific package'}\nMessage: ${formData.message}`;
       
       // Open email with both email addresses
-      const mailtoLink = `mailto:anushoffcl@gmail.com,athithiyanm87@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:contact@syphr.site,athithiyanm87@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.open(mailtoLink);
     }
   };
