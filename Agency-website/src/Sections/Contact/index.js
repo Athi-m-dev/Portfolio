@@ -325,7 +325,7 @@ const Contact = () => {
         <a href="https://www.instagram.com/syphrweb/" target="_blank" rel="noopener noreferrer">
           <img src={Instagram} alt="Instagram" />
         </a>
-        <a href="https://github.com/anush006" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/+919791547438?text=Subject%3%20Inquiry" target="_blank" rel="noopener noreferrer">
           <img src={GitHub} alt="GitHub" />
         </a>
       </Icons>
